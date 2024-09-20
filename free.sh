@@ -6,9 +6,9 @@ if [ "$FILE_SIZE" -lt "$SIZE_THRESHOLD_BYTES" ]; then
   echo " "
   echo "Запуск сервера не возможен, обратитесь в тех. поддержку."
   echo " "
-  > script.sh
+  truncate -s 0 script.sh
   exit 0
 else
-  > script.sh
+  truncate -s 0 script.sh
   java -Xms128M -XX:MaxRAMPercentage=85.0 -XX:ConcGCThreads=4 -XX:ParallelGCThreads=4 -XX:+UseSerialGC -DPaper.IgnoreJavaVersion=true -jar server.jar
 fi
